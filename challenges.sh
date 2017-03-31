@@ -5,6 +5,7 @@
 . ./create_file.sh --source-only
 . ./read_from_file.sh --source-only
 . ./copy_command_output.sh --source-only
+. ./create_logs.sh --source-only
 . ./print.sh --source-only
 
 
@@ -13,6 +14,7 @@ if [ -z ${1} ];then
     in_yellow "create-directory          Create a directory. Receives the path as argument."
     in_yellow "read-file                 Read a specific file (or a default one). Receives file name as argument."
     in_yellow "copy-command-output       Copy the output of a command to the clipboard. Receives a command as argument."
+    in_yellow "create-logs               Creates a logs file. Receives file name and an option to define if it will create a new file."
 else
     case ${1} in
         create-file)
@@ -29,6 +31,9 @@ else
 
         copy-command-output)
             copy_command_output ${@:2}
+        ;;
+        create-logs)
+            create_logs ${@:2}
         ;;
     esac
 fi
